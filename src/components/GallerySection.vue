@@ -32,21 +32,21 @@
 import { ref } from 'vue'
 
 const images = [
-  { src: './src/img/wedding1.jpg' },
-  { src: './src/img/wedding2.jpg' },
-  { src: './src/img/wedding3.jpg' },
-  { src: './src/img/wedding4.jpg' },
-  { src: './src/img/wedding5.jpg' },
-  { src: './src/img/wedding6.png' },
-  { src: './src/img/wedding7.jpg' },
-  { src: './src/img/wedding8.jpg' },
-  { src: './src/img/wedding9.jpg' },
-  { src: './src/img/wedding10.jpg' },
-  { src: './src/img/wedding11.jpg' },
-  { src: './src/img/wedding12.jpg' },
-  { src: './src/img/wedding13.jpg' },
-  { src: './src/img/wedding14.jpg' },
-  { src: './src/img/wedding15.jpg' }
+  { src: '/wedding-invitation/img/wedding1.jpg' },
+  { src: '/wedding-invitation/img/main.jpg' },
+  { src: '/wedding-invitation/img/wedding3.jpg' },
+  { src: '/wedding-invitation/img/wedding4.jpg' },
+  { src: '/wedding-invitation/img/wedding5.jpg' },
+  { src: '/wedding-invitation/img/wedding6.png' },
+  { src: '/wedding-invitation/img/wedding7.jpg' },
+  { src: '/wedding-invitation/img/wedding8.jpg' },
+  { src: '/wedding-invitation/img/wedding9.jpg' },
+  { src: '/wedding-invitation/img/wedding10.jpg' },
+  { src: '/wedding-invitation/img/wedding11.jpg' },
+  { src: '/wedding-invitation/img/wedding12.jpg' },
+  { src: '/wedding-invitation/img/wedding13.jpg' },
+  { src: '/wedding-invitation/img/wedding14.jpg' },
+  { src: '/wedding-invitation/img/wedding15.jpg' }
 ]
 
 const selectedIndex = ref(null)
