@@ -1,0 +1,520 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, name-strong, "Apple SD Gothic Neo",
+    "Noto Sans KR", system-ui, sans-serif;
+  background: #f7f3ee;
+  color: #333;
+  line-height: 1.6;
+}
+
+.wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  background: #fff;
+  min-height: 100vh;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+section {
+  padding: 64px 20px;
+}
+
+/* HERO */
+.hero {
+  padding: 0;
+  text-align: center;
+}
+
+.hero-top-text {
+  padding: 24px 20px 12px;
+}
+
+.hero-title-en {
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.hero-names {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.hero-image-wrapper {
+  text-align: center;
+}
+
+.hero-image {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-bottom-text {
+  padding: 12px 20px 24px;
+}
+
+.hero-sub {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 6px;
+}
+
+.hero-date-place {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* COMMON SECTION TITLES */
+.divider {
+  width: 40px;
+  height: 1px;
+  margin: 0 auto 20px;
+  background: #d7c3a5;
+}
+
+.section-label {
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c0a889;
+  margin-bottom: 6px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 18px;
+}
+
+/* INVITATION */
+.invitation-text {
+  font-size: 0.9rem;
+  text-align: center;
+  color: #555;
+  white-space: pre-line;
+}
+
+.parents-lines {
+  margin-top: 22px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.parents-lines .parents-line {
+  margin-bottom: 6px;
+}
+
+.name-strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.contact-buttons {
+  margin-top: 18px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.contact-buttons.single {
+  justify-content: center;
+}
+
+.contact-button {
+  flex: 1;
+  max-width: 240px;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 999px;
+  border: 1px solid #d7c3a5;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #8a6b45;
+  background: #fdf8f1;
+  cursor: pointer;
+}
+
+/* 연락처 모달 */
+.contact-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.contact-modal {
+  width: 90vw;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px 18px 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.contact-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.contact-modal-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.contact-modal-close {
+  border: none;
+  background: transparent;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.contact-modal-body {
+  font-size: 0.85rem;
+}
+
+.contact-group {
+  margin-top: 4px;
+}
+
+.contact-group-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-top: 1px solid #f3e7d8;
+}
+
+.contact-row:first-of-type {
+  border-top: none;
+}
+
+.contact-name {
+  font-size: 0.85rem;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.contact-action-button {
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #d7c3a5;
+  text-decoration: none;
+  color: #8a6b45;
+  background: #fdf8f1;
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #eee;
+  cursor: pointer;
+}
+
+.gallery-caption {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #999;
+}
+
+/* Gallery modal */
+.gallery-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.gallery-modal-image-wrapper {
+  max-width: 92vw;
+  max-height: 92vh;
+}
+
+.gallery-modal-image-wrapper img {
+  width: 100%;
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #000;
+}
+
+.gallery-modal-close {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* CALENDAR */
+.calendar-wrapper {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.calendar-header {
+  text-align: center;
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  font-size: 0.8rem;
+  margin: 30px 0 0 0;
+}
+
+.calendar-day-name {
+  text-align: center;
+  padding: 4px 0;
+  color: #8c7b64;
+  font-weight: 500;
+}
+
+.calendar-cell {
+  text-align: center;
+  padding: 8px 0;
+  min-height: 32px;
+}
+
+.calendar-cell-muted {
+  opacity: 0.3;
+}
+
+.calendar-cell-wedding {
+  background: #f4ede3;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #8a6b45;
+}
+
+.calendar-caption {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #777;
+}
+
+/* LOCATION & MAP */
+.location-box {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.location-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.location-address {
+  font-size: 0.86rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.location-subway {
+  font-size: 0.8rem;
+  color: #777;
+  margin-bottom: 10px;
+  white-space: pre-line;
+}
+
+.kakao-map-container {
+  margin-top: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* roughmap이 내부에 고정 px로 그려도, 부모가 좁으면 자동으로 맞춰짐 */
+.root_daum_roughmap {
+  width: 100% !important;
+  max-width: 100%;
+}
+
+.map-buttons.single {
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.map-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+.map-button {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 999px;
+  border: 1px solid #d7c3a5;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: #8a6b45;
+  background: #fdf8f1;
+}
+
+/* ACCOUNT (마음 전하실 곳) */
+.account-section {
+  margin-top: 12px;
+  border-top: 1px solid #f0e4d4;
+  padding-top: 16px;
+}
+
+.account-title {
+  text-align: center;      /* 가운데 정렬 */
+  font-size: 1.2rem;       /* 다른 섹션 타이틀과 비슷하게 크게 */
+  font-weight: 600;
+  margin-bottom: 18px;     /* 아래 여백도 조금 키워주기 */
+}
+
+/* 탭 버튼 영역 */
+.account-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.account-tab {
+  flex: 1;
+  padding: 6px 0;
+  border-radius: 999px;
+  border: 1px solid #e2d2bf;
+  background: #f9f3ea;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #8c7b64;
+}
+
+.account-tab.active {
+  background: #8a6b45;
+  color: #fff;
+  border-color: #8a6b45;
+}
+
+.account-helper-text {
+  font-size: 0.78rem;
+  color: #888;
+}
+
+/* 계좌 리스트 공통 */
+.account-group {
+  margin-bottom: 10px;
+}
+
+.account-group-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.account-line {
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* 계좌 모달 */
+.account-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+}
+
+.account-modal {
+  width: 90vw;
+  max-width: 420px;
+  max-height: 80vh;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px 18px 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+}
+
+.account-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.account-modal-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.account-modal-close {
+  border: none;
+  background: transparent;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.account-modal-body {
+  font-size: 0.85rem;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding-bottom: 40px;
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+@media (max-width: 360px) {
+  section {
+    padding: 28px 14px;
+  }
+
+  .gallery {
+    gap: 3px;
+  }
+}
