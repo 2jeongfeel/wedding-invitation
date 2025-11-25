@@ -1,8 +1,9 @@
 <template>
-  <div class="account-section">
+  <section>
     <!-- 영어 섹션 라벨 추가 -->
     <div class="section-label">ACCOUNT</div>
-    <div class="account-title">마음 전하실 곳</div>
+    <div class="section-title">마음 전하실 곳</div>
+    <div class="divider"></div>
 
     <!-- 신랑측 / 신부측 탭 -->
     <div class="account-tabs">
@@ -56,7 +57,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>

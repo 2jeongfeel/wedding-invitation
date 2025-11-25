@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="section-label">GALLERY</div>
-    <div class="section-title">웨딩 갤러리</div>
+    <div class="section-title">갤러리</div>
     <div class="divider"></div>
 
     <div class="gallery">
@@ -20,9 +20,24 @@
       class="gallery-modal-backdrop"
       @click.self="closeModal"
     >
+      <!-- 좌측/우측 이동 버튼 -->
+      <button
+        type="button"
+        class="gallery-modal-nav gallery-modal-nav-left"
+        @click.stop="prevImage"
+      >
+        ‹
+      </button>
       <div class="gallery-modal-image-wrapper">
         <img :src="images[selectedIndex].src" :alt="`웨딩 사진 확대`" />
       </div>
+      <button
+        type="button"
+        class="gallery-modal-nav gallery-modal-nav-right"
+        @click.stop="nextImage"
+      >
+        ›
+      </button>
       <div class="gallery-modal-close" @click="closeModal">×</div>
     </div>
   </section>
@@ -57,5 +72,18 @@ function openModal(index) {
 
 function closeModal() {
   selectedIndex.value = null
+}
+
+function prevImage() {
+  if (selectedIndex.value === null) return
+  const newIndex =
+    (selectedIndex.value - 1 + images.length) % images.length
+  selectedIndex.value = newIndex
+}
+
+function nextImage() {
+  if (selectedIndex.value === null) return
+  const newIndex = (selectedIndex.value + 1) % images.length
+  selectedIndex.value = newIndex
 }
 </script>

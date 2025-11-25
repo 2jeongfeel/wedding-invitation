@@ -7,7 +7,7 @@
 body {
   font-family: -apple-system, name-strong, "Apple SD Gothic Neo",
     "Noto Sans KR", system-ui, sans-serif;
-  background: #f7f3ee;
+  background: #fafafa;
   color: #333;
   line-height: 1.6;
 }
@@ -129,18 +129,20 @@ section {
   justify-content: center;
 }
 
+/* ▶ 연락하기 버튼: 화이트 계열 */
 .contact-button {
   flex: 1;
   max-width: 240px;
   text-align: center;
   padding: 10px 0;
   border-radius: 999px;
-  border: 1px solid #d7c3a5;
+  border: 1px solid #e0e0e0;
   font-size: 0.85rem;
   text-decoration: none;
-  color: #8a6b45;
-  background: #fdf8f1;
+  color: #555;
+  background: #ffffff;
   cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 /* 연락처 모달 */
@@ -217,14 +219,16 @@ section {
   gap: 6px;
 }
 
+/* ▶ 모달 안 전화/문자 버튼: 화이트 계열 */
 .contact-action-button {
   font-size: 0.8rem;
   padding: 6px 10px;
   border-radius: 999px;
-  border: 1px solid #d7c3a5;
+  border: 1px solid #e0e0e0;
   text-decoration: none;
-  color: #8a6b45;
-  background: #fdf8f1;
+  color: #555;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 /* GALLERY */
@@ -384,16 +388,18 @@ section {
   margin-bottom: 16px;
 }
 
+/* ▶ 지도 버튼도 화이트 계열 */
 .map-button {
   flex: 1;
   text-align: center;
   padding: 8px 0;
   border-radius: 999px;
-  border: 1px solid #d7c3a5;
+  border: 1px solid #e0e0e0;
   font-size: 0.8rem;
   text-decoration: none;
-  color: #8a6b45;
-  background: #fdf8f1;
+  color: #555;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 /* ACCOUNT (마음 전하실 곳) */
@@ -404,10 +410,10 @@ section {
 }
 
 .account-title {
-  text-align: center;      /* 가운데 정렬 */
-  font-size: 1.2rem;       /* 다른 섹션 타이틀과 비슷하게 크게 */
+  text-align: center;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 18px;     /* 아래 여백도 조금 키워주기 */
+  margin-bottom: 18px;
 }
 
 /* 탭 버튼 영역 */
@@ -417,21 +423,24 @@ section {
   margin-bottom: 6px;
 }
 
+/* ▶ 계좌 탭 버튼: 화이트 계열 */
 .account-tab {
   flex: 1;
   padding: 6px 0;
   border-radius: 999px;
-  border: 1px solid #e2d2bf;
-  background: #f9f3ea;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
   font-size: 0.8rem;
   cursor: pointer;
-  color: #8c7b64;
+  color: #555;
 }
 
+/* ▶ 선택된 탭은 살짝 회색만 */
 .account-tab.active {
-  background: #8a6b45;
-  color: #fff;
-  border-color: #8a6b45;
+  background: #f5f5f5;
+  color: #333;
+  border-color: #b0b0b0;
+  font-weight: 600;
 }
 
 .account-helper-text {
@@ -517,4 +526,31 @@ section {
   .gallery {
     gap: 3px;
   }
+}
+
+/* Gallery nav buttons */
+.gallery-modal-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.gallery-modal-nav-left {
+  left: 12px;
+}
+
+.gallery-modal-nav-right {
+  right: 12px;
 }

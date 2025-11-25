@@ -5,14 +5,14 @@
     <div class="divider"></div>
 
     <p class="invitation-text">
-오랜시간 친구로 함께한 저희,
+    오랜시간 친구로 함께한 저희,
     <br>
-이제는 서로의 삶을 함께 나아가기로 약속했습다.
+    이제는 서로의 삶을 함께 나아가기로 약속했습다.
     <br>
     <br>
-새로운 시작의 자리에 초대드리오니
+    새로운 시작의 자리에 초대드리오니
     <br>
-따뜻한 축복으로 함께해 주시면 감사하겠습다.
+    따뜻한 축복으로 함께해 주시면 감사하겠습다.
     <br>
     <br>
     </p>
@@ -20,11 +20,11 @@
     <!-- 혼주 & 신랑신부 표현 -->
     <div class="parents-lines">
       <div class="parents-line">
-        <span class="name-strong">이성재</span> · <span class="name-strong">전미희</span>의
+        <span class="name-strong">이성재</span> · <span class="name-strong">전미희</span>의&nbsp;&nbsp;
         장남 <span class="name-strong">이정필</span>
       </div>
       <div class="parents-line">
-        <span class="name-strong">장영덕</span> · <span class="name-strong">정수선</span>의
+        <span class="name-strong">장영덕</span> · <span class="name-strong">정수선</span>의&nbsp;&nbsp;
         장녀 <span class="name-strong">장유지</span>
       </div>
     </div>

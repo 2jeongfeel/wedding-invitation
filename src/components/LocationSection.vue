@@ -7,12 +7,12 @@
     <div class="location-box">
       <div class="location-name">공덕역 이룸 웨딩 컨벤션</div>
       <div class="location-address">
-        서울 마포구 마포대로 78<br />
-        (도화동, 경찰공제회 자람빌딩 4~6층)
+      서울 마포구 마포대로 78<br />
+      (도화동, 경찰공제회 자람빌딩 4~6층)
       </div>
       <div class="location-subway">
-5·6호선 공덕역 8번 출구 도보 약 2분
-경의선·공항철도 공덕역 인근
+      5·6호선 공덕역 8번 출구 도보 약 2분
+      경의선·공항철도 공덕역 인근
       </div>
 
       <!-- ✅ 1. 지도 노드 (퍼가기에서 준 div 그대로) -->
