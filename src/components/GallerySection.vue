@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="section-label">GALLERY</div>
-    <div class="section-title">갤러리</div>
+    <div class="section-title">사진첩</div>
     <div class="divider"></div>
 
     <div class="gallery">
@@ -48,11 +48,11 @@ import { ref } from 'vue'
 
 const images = [
   { src: '/wedding-invitation/img/wedding1.jpg' },
-  { src: '/wedding-invitation/img/main.jpg' },
+  { src: '/wedding-invitation/img/wedding2.jpg' },
   { src: '/wedding-invitation/img/wedding3.jpg' },
   { src: '/wedding-invitation/img/wedding4.jpg' },
   { src: '/wedding-invitation/img/wedding5.jpg' },
-  { src: '/wedding-invitation/img/wedding6.png' },
+  { src: '/wedding-invitation/img/wedding6.jpg' },
   { src: '/wedding-invitation/img/wedding7.jpg' },
   { src: '/wedding-invitation/img/wedding8.jpg' },
   { src: '/wedding-invitation/img/wedding9.jpg' },
@@ -61,7 +61,12 @@ const images = [
   { src: '/wedding-invitation/img/wedding12.jpg' },
   { src: '/wedding-invitation/img/wedding13.jpg' },
   { src: '/wedding-invitation/img/wedding14.jpg' },
-  { src: '/wedding-invitation/img/wedding15.jpg' }
+  { src: '/wedding-invitation/img/wedding15.jpg' },
+  { src: '/wedding-invitation/img/wedding16.jpg' },
+  { src: '/wedding-invitation/img/wedding17.jpg' },
+  { src: '/wedding-invitation/img/wedding18.jpg' },
+  { src: '/wedding-invitation/img/wedding19.jpg' },
+  { src: '/wedding-invitation/img/wedding20.jpg' }
 ]
 
 const selectedIndex = ref(null)

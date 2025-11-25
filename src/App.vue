@@ -5,6 +5,7 @@
     <GallerySection />
     <CalendarSection />
     <LocationSection />
+    <AccountSection />
     <SiteFooter />
   </div>
 </template>
@@ -15,5 +16,6 @@ import InvitationSection from './components/InvitationSection.vue'
 import GallerySection from './components/GallerySection.vue'
 import CalendarSection from './components/CalendarSection.vue'
 import LocationSection from './components/LocationSection.vue'
+import AccountSection from './components/AccountSection.vue'
 import SiteFooter from './components/SiteFooter.vue'
 </script>

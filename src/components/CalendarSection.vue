@@ -27,6 +27,7 @@
         </div>
       </div>
       <div class="calendar-caption">
+        <br/>
         2월 7일 토요일 오전 11시에<br />
         귀여운 부부의 결혼식이 진행됩니다.
       </div>

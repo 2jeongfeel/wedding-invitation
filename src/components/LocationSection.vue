@@ -21,15 +21,12 @@
         class="root_daum_roughmap root_daum_roughmap_landing kakao-map-container"
       >
       </div>
-      <!-- ✅ 계좌는 별도 컴포넌트로 분리 -->
-      <AccountSection />
     </div>
   </section>
 </template>
 
 <script setup>
 import { onMounted } from 'vue'
-import AccountSection from './AccountSection.vue'
 
 onMounted(() => {
   // roughmap 로더가 로드될 때까지 기다렸다가 실행

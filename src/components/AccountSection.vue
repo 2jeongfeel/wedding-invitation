@@ -5,6 +5,27 @@
     <div class="section-title">마음 전하실 곳</div>
     <div class="divider"></div>
 
+    <p class="account-text">
+    소중한 주말, 전국 각지에서 저희를 위해
+    <br>
+    귀한 마음 써주심에 감사드립니다.
+    <br>
+    <br>
+    비대면으로 축하를 전하고자
+    <br>
+    하시는 분들을 위해
+    <br>
+    계좌번호를 기재하였습니다.
+    <br>
+    너그러운 마음으로 양해 부탁드립니다.
+    <br>
+    <br>
+    잊지 않고 꼭 보답하며 평생 간직하겠습니다.
+    <br>
+    <br>
+    <br>
+    </p>
+
     <!-- 신랑측 / 신부측 탭 -->
     <div class="account-tabs">
       <button
