@@ -4,6 +4,12 @@
   padding: 0;
 }
 
+/* 모달 떠 있을 때 배경 스크롤 막기 */
+body.modal-open {
+  overflow: hidden;
+  touch-action: none; /* 모바일에서 터치 스크롤 막기 */
+}
+
 body {
   font-family: "Pretendard Variable", "Noto Sans KR", -apple-system,
     system-ui, sans-serif;
@@ -567,4 +573,57 @@ section {
 
 .gallery-modal-nav-right {
   right: 12px;
+}
+
+/* 계좌 모달 내 한 줄(이름 + 은행+계좌 + 복사버튼) */
+.account-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-top: 1px solid #f3e7d8;
+  font-size: 0.85rem;
+}
+
+.account-row:first-of-type {
+  margin-top: 4px;
+}
+
+.account-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.account-name {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.account-detail {
+  font-size: 0.8rem;
+  color: #555;
+  word-break: break-all;
+}
+
+.account-actions {
+  margin-left: 8px;
+}
+
+/* 복사 버튼 - 연락처 모달 버튼과 톤 맞춤 */
+.account-copy-button {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  font-size: 0.75rem;
+  cursor: pointer;
+  color: #555;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.account-copy-guide {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: #888;
 }

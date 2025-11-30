@@ -73,10 +73,12 @@ const selectedIndex = ref(null)
 
 function openModal(index) {
   selectedIndex.value = index
+  document.body.classList.add('modal-open')
 }
 
 function closeModal() {
   selectedIndex.value = null
+  document.body.classList.remove('modal-open')
 }
 
 function prevImage() {

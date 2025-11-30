@@ -62,7 +62,6 @@
             <div class="contact-row">
               <div class="contact-name">신랑 이정필</div>
               <div class="contact-actions">
-                <!-- TODO: 실제 번호로 수정 -->
                 <a class="contact-action-button" href="tel:01075703708">
                   전화
                 </a>
@@ -75,10 +74,10 @@
             <div class="contact-row">
               <div class="contact-name">아버지 이성재</div>
               <div class="contact-actions">
-                <a class="contact-action-button" href="tel:01000000000">
+                <a class="contact-action-button" href="tel:01094305565">
                   전화
                 </a>
-                <a class="contact-action-button" href="sms:01000000000">
+                <a class="contact-action-button" href="sms:01094305565">
                   문자
                 </a>
               </div>
@@ -87,10 +86,10 @@
             <div class="contact-row">
               <div class="contact-name">어머니 전미희</div>
               <div class="contact-actions">
-                <a class="contact-action-button" href="tel:01000000000">
+                <a class="contact-action-button" href="tel:01076793708">
                   전화
                 </a>
-                <a class="contact-action-button" href="sms:01000000000">
+                <a class="contact-action-button" href="sms:01076793708">
                   문자
                 </a>
               </div>
@@ -104,11 +103,10 @@
             <div class="contact-row">
               <div class="contact-name">신부 장유지</div>
               <div class="contact-actions">
-                <!-- TODO: 실제 번호로 수정 -->
-                <a class="contact-action-button" href="tel:01000000000">
+                <a class="contact-action-button" href="tel:01065101129">
                   전화
                 </a>
-                <a class="contact-action-button" href="sms:01000000000">
+                <a class="contact-action-button" href="sms:01065101129">
                   문자
                 </a>
               </div>
@@ -117,10 +115,10 @@
             <div class="contact-row">
               <div class="contact-name">아버지 장영덕</div>
               <div class="contact-actions">
-                <a class="contact-action-button" href="tel:01000000000">
+                <a class="contact-action-button" href="tel:01087610255">
                   전화
                 </a>
-                <a class="contact-action-button" href="sms:01000000000">
+                <a class="contact-action-button" href="sms:01087610255">
                   문자
                 </a>
               </div>
@@ -129,16 +127,16 @@
             <div class="contact-row">
               <div class="contact-name">어머니 정수선</div>
               <div class="contact-actions">
-                <a class="contact-action-button" href="tel:01000000000">
+                <a class="contact-action-button" href="tel:01030800156">
                   전화
                 </a>
-                <a class="contact-action-button" href="sms:01000000000">
+                <a class="contact-action-button" href="sms:01030800156">
                   문자
                 </a>
               </div>
             </div>
           </div>
-        </div> <!-- /contact-modal-body -->
+        </div> 
       </div>
     </div>
   </section>
@@ -149,11 +147,13 @@ import { ref } from 'vue'
 
 const showContactModal = ref(false)
 
-const openContactModal = () => {
+function openContactModal() {
   showContactModal.value = true
+  document.body.classList.add('modal-open')
 }
 
-const closeContactModal = () => {
+function closeContactModal() {
   showContactModal.value = false
+  document.body.classList.remove('modal-open')
 }
 </script>
