@@ -1,3 +1,18 @@
+@font-face {
+  font-family: 'Batang';
+  src: url('/fonts/Batang_Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Equila 본문 폰트 */
+@font-face {
+  font-family: 'Equila';
+  src: url('/fonts/Equila.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,7 +26,7 @@ body.modal-open {
 }
 
 body {
-  font-family: "Pretendard Variable", "Noto Sans KR", -apple-system,
+  font-family: "Batang", "Noto Sans KR", -apple-system,
     system-ui, sans-serif;
   background: #fafafa;
   color: #333;
@@ -30,12 +45,26 @@ section {
   padding: 64px 20px;
 }
 
-/* HERO */
+/* 섹션 안에서만 등장 애니메이션 줄 래퍼 */
+.fade-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   HERO (메인 사진 풀스크린 + 하단 오버레이)
+   ========================================= */
 .hero {
   padding: 0;
   text-align: center;
   position: relative;
-  height: 100vh;           /* 화면 전체 높이 채우기 */
+  height: 100vh; /* 화면 전체 높이 채우기 */
   overflow: hidden;
 }
 
@@ -48,14 +77,32 @@ section {
 
 .hero-image-wrapper {
   position: absolute;
-  inset: 0;                /* top:0; right:0; bottom:0; left:0; */
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
 }
 
 .hero-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;       /* 화면 비율에 맞게 꽉 채우고 넘치는 부분은 잘라냄 */
+  object-fit: cover; /* 화면 비율에 맞게 꽉 채우고 넘치는 부분은 잘라냄 */
   display: block;
+}
+
+/* 사진 위 하단 날짜/장소 오버레이 */
+.hero-bottom-text {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  max-width: calc(100% - 40px);
+
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+
+  font-size: 0.8rem;
+  line-height: 1.4;
+  text-align: center;
 }
 
 .hero-sub {
@@ -68,7 +115,9 @@ section {
   font-size: 0.8rem;
 }
 
-/* COMMON SECTION TITLES */
+/* =========================================
+   공통 섹션 타이틀
+   ========================================= */
 .divider {
   width: 40px;
   height: 1px;
@@ -76,15 +125,14 @@ section {
   background: #d7c3a5;
 }
 
-/* 영어 섹션 라벨은 DM Sans */
+/* 영어 섹션 라벨은 Equila */
 .section-label {
-  font-family: "DM Sans", "Pretendard Variable", "Noto Sans KR", sans-serif;
+  font-family: "Equila", "Noto Sans KR", sans-serif;
   text-align: center;
   font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #c0a889;
-  /* color: #2196F3; */
   margin-bottom: 6px;
 }
 
@@ -94,7 +142,9 @@ section {
   margin-bottom: 18px;
 }
 
-/* INVITATION */
+/* =========================================
+   INVITATION
+   ========================================= */
 .invitation-text {
   font-size: 0.9rem;
   text-align: center;
@@ -117,6 +167,7 @@ section {
   font-weight: 600;
 }
 
+/* 연락하기 버튼 */
 .contact-buttons {
   margin-top: 18px;
   display: flex;
@@ -128,7 +179,7 @@ section {
   justify-content: center;
 }
 
-/* ▶ 연락하기 버튼: 화이트 계열 */
+/* 화이트 계열 기본 버튼 */
 .contact-button {
   flex: 1;
   max-width: 240px;
@@ -144,7 +195,9 @@ section {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
-/* 연락처 모달 */
+/* =========================================
+   연락처 모달
+   ========================================= */
 .contact-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -218,7 +271,7 @@ section {
   gap: 6px;
 }
 
-/* ▶ 모달 안 전화/문자 버튼: 화이트 계열 */
+/* 모달 안 전화/문자 버튼 */
 .contact-action-button {
   font-size: 0.8rem;
   padding: 6px 10px;
@@ -230,7 +283,14 @@ section {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
-/* GALLERY */
+.contact-action-button i {
+  margin-right: 4px;
+  font-size: 0.9em;
+}
+
+/* =========================================
+   GALLERY
+   ========================================= */
 .gallery {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -287,7 +347,49 @@ section {
   cursor: pointer;
 }
 
-/* CALENDAR */
+/* Gallery nav buttons */
+.gallery-modal-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0, 0, 0, 0);
+  color: #fff;
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+
+  /* 클릭 하이라이트 제거 */
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-modal-nav:active,
+.gallery-modal-nav:focus {
+  outline: none;
+  box-shadow: none;
+  background: rgba(0, 0, 0, 0);
+  transform: translateY(-50%); /* 눌릴 때 눌리는 애니메이션 방지 */
+}
+
+.gallery-modal-nav-left {
+  left: 12px;
+}
+
+.gallery-modal-nav-right {
+  right: 12px;
+}
+
+/* =========================================
+   CALENDAR
+   ========================================= */
 .calendar-wrapper {
   max-width: 300px;
   margin: 0 auto;
@@ -339,7 +441,9 @@ section {
   color: #777;
 }
 
-/* LOCATION & MAP */
+/* =========================================
+   LOCATION & MAP
+   ========================================= */
 .location-box {
   margin-top: 12px;
   font-size: 0.9rem;
@@ -370,39 +474,15 @@ section {
   overflow: hidden;
 }
 
-/* roughmap이 내부에 고정 px로 그려도, 부모가 좁으면 자동으로 맞춰짐 */
+/* 이전 카카오 roughmap 잔여 스타일 (네이버 지도여도 문제 없음) */
 .root_daum_roughmap {
   width: 100% !important;
   max-width: 100%;
 }
 
-.map-buttons.single {
-  margin-top: 10px;
-  justify-content: center;
-}
-
-.map-buttons {
-  display: flex;
-  gap: 8px;
-  margin-top: 4px;
-  margin-bottom: 16px;
-}
-
-/* ▶ 지도 버튼도 화이트 계열 */
-.map-button {
-  flex: 1;
-  text-align: center;
-  padding: 8px 0;
-  border-radius: 999px;
-  border: 1px solid #e0e0e0;
-  font-size: 0.8rem;
-  text-decoration: none;
-  color: #555;
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-}
-
-/* ACCOUNT (마음 전하실 곳) */
+/* =========================================
+   ACCOUNT (마음 전하실 곳)
+   ========================================= */
 .account-section {
   margin-top: 12px;
   border-top: 1px solid #f0e4d4;
@@ -416,6 +496,14 @@ section {
   margin-bottom: 18px;
 }
 
+/* 안내 텍스트 */
+.account-text {
+  font-size: 0.9rem;
+  text-align: center;
+  color: #555;
+  white-space: pre-line;
+}
+
 /* 탭 버튼 영역 */
 .account-tabs {
   display: flex;
@@ -423,7 +511,7 @@ section {
   margin-bottom: 6px;
 }
 
-/* ▶ 계좌 탭 버튼: 화이트 계열 */
+/* 계좌 탭 버튼 */
 .account-tab {
   flex: 1;
   padding: 6px 0;
@@ -435,7 +523,6 @@ section {
   color: #555;
 }
 
-/* ▶ 선택된 탭은 살짝 회색만 */
 .account-tab.active {
   background: #f5f5f5;
   color: #333;
@@ -443,19 +530,7 @@ section {
   font-weight: 600;
 }
 
-.account-helper-text {
-  font-size: 0.78rem;
-  color: #888;
-}
-
-.account-text {
-  font-size: 0.9rem;
-  text-align: center;
-  color: #555;
-  white-space: pre-line;
-}
-
-/* 계좌 리스트 공통 */
+/* 예전 구조용 공통 스타일(사용 안 해도 영향 없음) */
 .account-group {
   margin-bottom: 10px;
 }
@@ -517,64 +592,6 @@ section {
   font-size: 0.85rem;
 }
 
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding-bottom: 40px;
-  font-size: 0.75rem;
-  color: #aaa;
-}
-
-@media (max-width: 360px) {
-  section {
-    padding: 28px 14px;
-  }
-
-  .gallery {
-    gap: 3px;
-  }
-}
-
-/* Gallery nav buttons */
-.gallery-modal-nav {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: rgba(0, 0, 0, 0);
-  color: #fff;
-  font-size: 2rem;
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1001;
-
-  /* 클릭 하이라이트 제거 */
-  outline: none;
-  box-shadow: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.gallery-modal-nav:active,
-.gallery-modal-nav:focus {
-  outline: none;
-  box-shadow: none;
-  background: rgba(0, 0, 0, 0);
-  transform: translateY(-50%); /* 눌릴 때 눌리는 애니메이션 방지 */
-}
-
-.gallery-modal-nav-left {
-  left: 12px;
-}
-
-.gallery-modal-nav-right {
-  right: 12px;
-}
-
 /* 계좌 모달 내 한 줄(이름 + 은행+계좌 + 복사버튼) */
 .account-row {
   display: flex;
@@ -626,4 +643,46 @@ section {
   margin-top: 10px;
   font-size: 0.78rem;
   color: #888;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.footer {
+  text-align: center;
+  padding-bottom: 40px;
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.footer-image-wrapper {
+  margin-bottom: 12px;
+}
+
+.footer-image {
+  width: 100%;
+  max-width: 320px;     /* 너무 커지지 않도록 적당히 제한 */
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;       /* 가운데 정렬 */
+  object-fit: cover;
+
+  transform: translateX(12px);
+}
+
+.footer-text {
+  line-height: 1.4;
+}
+
+/* =========================================
+   반응형
+   ========================================= */
+@media (max-width: 360px) {
+  section {
+    padding: 28px 14px;
+  }
+
+  .gallery {
+    gap: 3px;
+  }
 }

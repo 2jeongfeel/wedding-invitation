@@ -1,39 +1,42 @@
 <template>
   <section>
-    <div class="section-label">INVITATION</div>
-    <div class="section-title">소중한 분들을 초대합니다</div>
-    <div class="divider"></div>
+    <div class="fade-section" v-intersect>
+      <div class="section-label">INVITATION</div>
+      <div class="section-title">소중한 분들을 초대합니다</div>
+      <div class="divider"></div>
 
-    <p class="invitation-text">
-    오랜시간 친구로 함께한 저희,
-    <br>
-    이제는 서로의 삶을 함께 나아가기로 약속했습니다.
-    <br>
-    <br>
-    새로운 시작의 자리에 초대드리오니
-    <br>
-    따뜻한 축복으로 함께해 주시면 감사하겠습니다.
-    <br>
-    <br>
-    </p>
+      <p class="invitation-text">
+      오랜시간 친구로 함께한 저희,
+      <br>
+      이제는 서로의 삶을 함께 나아가기로 약속했습니다.
+      <br>
+      <br>
+      새로운 시작의 자리에 초대드리오니
+      <br>
+      따뜻한 축복으로 함께해 주시면 감사하겠습니다.
+      <br>
+      <br>
+      </p>
 
-    <!-- 혼주 & 신랑신부 표현 -->
-    <div class="parents-lines">
-      <div class="parents-line">
-        <span class="name-strong">이성재</span> · <span class="name-strong">전미희</span>의&nbsp;&nbsp;
-        장남 <span class="name-strong">이정필</span>
+      <!-- 혼주 & 신랑신부 표현 -->
+      <div class="parents-lines">
+        <div class="parents-line">
+          <span class="name-strong">이성재</span> · <span class="name-strong">전미희</span>의&nbsp;
+          장남&nbsp;&nbsp;<span class="name-strong">이정필</span>
+        </div>
+        <div class="parents-line">
+          <span class="name-strong">장영덕</span> · <span class="name-strong">정수선</span>의&nbsp;
+          장녀&nbsp;&nbsp;<span class="name-strong">장유지</span>
+        </div>
       </div>
-      <div class="parents-line">
-        <span class="name-strong">장영덕</span> · <span class="name-strong">정수선</span>의&nbsp;&nbsp;
-        장녀 <span class="name-strong">장유지</span>
-      </div>
-    </div>
 
-    <!-- 연락하기 버튼 (1개) -->
-    <div class="contact-buttons single">
-      <button class="contact-button" type="button" @click="openContactModal">
-        연락하기
-      </button>
+      <!-- 연락하기 버튼 (1개) -->
+      <div class="contact-buttons single">
+        <button class="contact-button" type="button" @click="openContactModal">
+          <i class="fa-solid fa-phone"></i>
+          연락하기
+        </button>
+      </div>
     </div>
 
     <!-- 연락처 모달 -->
@@ -63,9 +66,11 @@
               <div class="contact-name">신랑 이정필</div>
               <div class="contact-actions">
                 <a class="contact-action-button" href="tel:01075703708">
+                  <i class="fa-solid fa-phone"></i>
                   전화
                 </a>
                 <a class="contact-action-button" href="sms:01075703708">
+                  <i class="fa-solid fa-envelope"></i>
                   문자
                 </a>
               </div>
@@ -75,9 +80,11 @@
               <div class="contact-name">아버지 이성재</div>
               <div class="contact-actions">
                 <a class="contact-action-button" href="tel:01094305565">
+                  <i class="fa-solid fa-phone"></i>
                   전화
                 </a>
                 <a class="contact-action-button" href="sms:01094305565">
+                  <i class="fa-solid fa-envelope"></i>
                   문자
                 </a>
               </div>
@@ -87,9 +94,11 @@
               <div class="contact-name">어머니 전미희</div>
               <div class="contact-actions">
                 <a class="contact-action-button" href="tel:01076793708">
+                  <i class="fa-solid fa-phone"></i>
                   전화
                 </a>
                 <a class="contact-action-button" href="sms:01076793708">
+                  <i class="fa-solid fa-envelope"></i>
                   문자
                 </a>
               </div>
@@ -104,9 +113,11 @@
               <div class="contact-name">신부 장유지</div>
               <div class="contact-actions">
                 <a class="contact-action-button" href="tel:01065101129">
+                  <i class="fa-solid fa-phone"></i>
                   전화
                 </a>
                 <a class="contact-action-button" href="sms:01065101129">
+                  <i class="fa-solid fa-envelope"></i>
                   문자
                 </a>
               </div>
@@ -116,9 +127,11 @@
               <div class="contact-name">아버지 장영덕</div>
               <div class="contact-actions">
                 <a class="contact-action-button" href="tel:01087610255">
+                  <i class="fa-solid fa-phone"></i>
                   전화
                 </a>
                 <a class="contact-action-button" href="sms:01087610255">
+                  <i class="fa-solid fa-envelope"></i>
                   문자
                 </a>
               </div>
@@ -128,9 +141,11 @@
               <div class="contact-name">어머니 정수선</div>
               <div class="contact-actions">
                 <a class="contact-action-button" href="tel:01030800156">
+                  <i class="fa-solid fa-phone"></i>
                   전화
                 </a>
                 <a class="contact-action-button" href="sms:01030800156">
+                  <i class="fa-solid fa-envelope"></i>
                   문자
                 </a>
               </div>

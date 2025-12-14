@@ -1,35 +1,37 @@
 <template>
-  <section>
-    <div class="section-label">CALENDAR</div>
-    <div class="divider"></div>
+  <section >
+    <div class="fade-section" v-intersect>
+      <div class="section-label">CALENDAR</div>
+      <div class="divider"></div>
 
-    <div class="calendar-wrapper">
-      <div class="calendar-header">2026년 2월</div>
-      <div class="calendar-grid">
-        <div
-          v-for="dayName in dayNames"
-          :key="dayName"
-          class="calendar-day-name"
-        >
-          {{ dayName }}
-        </div>
+      <div class="calendar-wrapper">
+        <div class="calendar-header">2026년 2월</div>
+        <div class="calendar-grid">
+          <div
+            v-for="dayName in dayNames"
+            :key="dayName"
+            class="calendar-day-name"
+          >
+            {{ dayName }}
+          </div>
 
-        <div
-          v-for="(cell, idx) in cells"
-          :key="idx"
-          class="calendar-cell"
-          :class="{
-            'calendar-cell-muted': cell.muted,
-            'calendar-cell-wedding': cell.isWedding
-          }"
-        >
-          <span v-if="cell.day">{{ cell.day }}</span>
+          <div
+            v-for="(cell, idx) in cells"
+            :key="idx"
+            class="calendar-cell"
+            :class="{
+              'calendar-cell-muted': cell.muted,
+              'calendar-cell-wedding': cell.isWedding
+            }"
+          >
+            <span v-if="cell.day">{{ cell.day }}</span>
+          </div>
         </div>
-      </div>
-      <div class="calendar-caption">
-        <br/>
-        2월 7일 토요일 오전 11시에<br />
-        귀여운 부부의 결혼식이 진행됩니다.
+        <div class="calendar-caption">
+          <br/>
+          2월 7일 토요일 오전 11시<br />
+          저희 두 사람의 소중한 날에 함께해 주시길 바랍니다.
+        </div>
       </div>
     </div>
   </section>

@@ -1,17 +1,19 @@
 <template>
   <section>
-    <div class="section-label">GALLERY</div>
-    <div class="section-title">사진첩</div>
-    <div class="divider"></div>
+    <div class="fade-section" v-intersect>
+      <div class="section-label">GALLERY</div>
+      <div class="section-title">사진첩</div>
+      <div class="divider"></div>
 
-    <div class="gallery">
-      <img
-        v-for="(img, index) in images"
-        :key="index"
-        :src="img.src"
-        :alt="`웨딩 사진 ${index + 1}`"
-        @click="openModal(index)"
-      />
+      <div class="gallery">
+        <img
+          v-for="(img, index) in images"
+          :key="index"
+          :src="img.src"
+          :alt="`웨딩 사진 ${index + 1}`"
+          @click="openModal(index)"
+        />
+      </div>
     </div>
 
     <!-- 확대 모달 -->

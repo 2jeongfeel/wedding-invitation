@@ -1,9 +1,9 @@
 <template>
   <section class="hero">
     <!-- 우리의 메인 사진 (가로 꽉 채우기) -->
-    <div class="hero-image-wrapper">
-      <img src="/img/main.jpg" alt="우리의 사진" class="hero-image" />
-    </div>
+      <div class="hero-image-wrapper">
+        <img src="/img/main.jpg" alt="우리의 사진" class="hero-image" />
+      </div>
   </section>
 </template>
 
