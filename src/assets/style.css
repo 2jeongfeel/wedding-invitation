@@ -468,6 +468,30 @@ section {
   white-space: pre-line;
 }
 
+.location-transport {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.transport-group {
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+
+.transport-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.transport-line {
+  font-size: 0.8rem;
+  color: #555;
+  line-height: 1.5;
+}
+
 .kakao-map-container {
   margin-top: 12px;
   border-radius: 12px;
@@ -483,166 +507,143 @@ section {
 /* =========================================
    ACCOUNT (마음 전하실 곳)
    ========================================= */
+/*
+
+/* ACCOUNT (마음 전하실 곳) */
 .account-section {
-  margin-top: 12px;
-  border-top: 1px solid #f0e4d4;
-  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 가운데 기준 */
 }
 
-.account-title {
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 18px;
-}
-
-/* 안내 텍스트 */
+/* 안내 문구 */
 .account-text {
   font-size: 0.9rem;
   text-align: center;
   color: #555;
   white-space: pre-line;
-}
-
-/* 탭 버튼 영역 */
-.account-tabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-
-/* 계좌 탭 버튼 */
-.account-tab {
-  flex: 1;
-  padding: 6px 0;
-  border-radius: 999px;
-  border: 1px solid #e0e0e0;
-  background: #ffffff;
-  font-size: 0.8rem;
-  cursor: pointer;
-  color: #555;
-}
-
-.account-tab.active {
-  background: #f5f5f5;
-  color: #333;
-  border-color: #b0b0b0;
-  font-weight: 600;
-}
-
-/* 예전 구조용 공통 스타일(사용 안 해도 영향 없음) */
-.account-group {
   margin-bottom: 10px;
 }
 
-.account-group-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.account-line {
-  font-size: 0.8rem;
-  color: #555;
-}
-
-/* 계좌 모달 */
-.account-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
+/* 탭 버튼 영역 - 가운데 pill 형식 */
+.account-tabs {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  z-index: 1100;
+  gap: 0;
+  padding: 3px;
+  border-radius: 999px;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 14px;
 }
 
-.account-modal {
-  width: 90vw;
-  max-width: 420px;
-  max-height: 80vh;
-  background: #fff;
-  border-radius: 16px;
-  padding: 16px 18px 18px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  overflow-y: auto;
+/* 탭 버튼 공통 */
+.account-tab {
+  flex: none;
+  min-width: 90px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #888;
 }
 
-.account-modal-header {
+/* 선택된 탭 */
+.account-tab.active {
+  background: #ffffff;
+  color: #333;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* 슬라이더 (스크롤바 숨기고 transform으로 이동) */
+.account-slider {
+  margin-top: 4px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.account-slider-track {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
 }
 
-.account-modal-title {
+/* 각 슬라이드: width / marginRight는 인라인 스타일에서 제어 */
+.account-slide {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center; /* 카드 중앙 정렬 */
+}
+
+/* 카드 자체 */
+.account-card {
+  width: 100%;              /* 슬라이드 폭만큼 채우기 */
+  max-width: 280px;
+  min-height: 120px;
+  border-radius: 18px;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  padding: 24px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* 내용 가운데 정렬 */
+  text-align: center;
+  gap: 15px;
+}
+
+/* 1줄 : 이름 */
+.account-card-name {
   font-size: 1rem;
   font-weight: 600;
 }
 
-.account-modal-close {
-  border: none;
-  background: transparent;
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.account-modal-body {
-  font-size: 0.85rem;
-}
-
-/* 계좌 모달 내 한 줄(이름 + 은행+계좌 + 복사버튼) */
-.account-row {
-  display: flex;
+/* 2줄 : 은행 + 계좌 + 복사 버튼 (한 줄) */
+.account-card-detail-row {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-top: 1px solid #f3e7d8;
-  font-size: 0.85rem;
-}
-
-.account-row:first-of-type {
-  margin-top: 4px;
-}
-
-.account-main {
-  flex: 1;
-  min-width: 0;
-}
-
-.account-name {
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-
-.account-detail {
-  font-size: 0.8rem;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.9rem;
   color: #555;
-  word-break: break-all;
+  flex-wrap: wrap;
 }
 
-.account-actions {
-  margin-left: 8px;
+.account-card-bank {
+  margin-right: 2px;
 }
 
-/* 복사 버튼 - 연락처 모달 버튼과 톤 맞춤 */
+/* 복사 버튼 */
 .account-copy-button {
-  padding: 4px 10px;
+  width: 26px;
+  height: 26px;
   border-radius: 999px;
-  border: 1px solid #e0e0e0;
+  border: none;
   background: #ffffff;
-  font-size: 0.75rem;
   cursor: pointer;
-  color: #555;
-  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  padding: 0;
 }
 
+.account-copy-button i {
+  font-size: 0.9rem;
+  margin: 0; /* 텍스트 없으니 마진 제거 */
+}
+
+/* 복사 안내 문구 */
 .account-copy-guide {
-  margin-top: 10px;
+  margin-top: 180px;
   font-size: 0.78rem;
   color: #888;
+  text-align: center;
+  pointer-events: none;          /* 클릭 막지 않게 */
+  position: fixed;
 }
 
 /* =========================================
@@ -661,7 +662,7 @@ section {
 
 .footer-image {
   width: 100%;
-  max-width: 320px;     /* 너무 커지지 않도록 적당히 제한 */
+  max-width: 160px;     /* 너무 커지지 않도록 적당히 제한 */
   border-radius: 8px;
   display: block;
   margin: 0 auto;       /* 가운데 정렬 */

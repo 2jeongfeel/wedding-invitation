@@ -21,6 +21,65 @@
           <div id="naverMap" style="width: 100%; height: 260px;"></div>
         </div>
       </div>
+
+      <!-- 지하철 / 버스 / 자가용 안내 블록 -->
+      <div class="location-transport">
+        <!-- 지하철 -->
+        <div class="transport-group">
+          <div class="transport-title">지하철</div>
+          <p class="transport-line">
+            <span style="color:#996CAC;">●</span>
+            5호선 
+            <span style="color:#CD7C2F;">●</span> 6호선 공덕역 8번 출구
+          </p>
+          <p class="transport-line">
+            <span style="color:#996CAC;">●</span> 5호선 마포역 3번 출구
+          </p>
+          <p class="transport-line">
+            <span style="color:#0090D2;">●</span>공항철도
+            <span style="color:#77C4A3;">●</span>경의중앙선 공덕역 9번 출구
+          </p>
+        </div>
+
+        <!-- 버스 -->
+        <div class="transport-group">
+          <div class="transport-title">버스</div>
+          <p class="transport-line">
+            공덕역 · 공덕오거리 정류장 하차
+          </p>
+          <p class="transport-line">
+            <span style="color:#00a0e9;">●</span> 공항&nbsp;6015, 6021, 6702
+          </p>
+          <p class="transport-line">
+            <span style="color:#0068b7;">●</span> 간선&nbsp;160, 260, 463, 600
+          </p>
+          <p class="transport-line">
+            <span style="color:#53b332;">●</span> 지선&nbsp;7013A · 7013B, 7016, 7611, 7613
+          </p>
+          <p class="transport-line">
+            <span style="color:#e60012;">●</span> 급행&nbsp;8601, 2500, 8600
+          </p>
+        </div>
+
+        <!-- 자가용 -->
+        <div class="transport-group">
+          <div class="transport-title">자가용</div>
+          <p class="transport-line">
+            ● 네비게이션
+            <br/>
+            &nbsp; &nbsp;· ‘이룸웨딩컨벤션’ 또는
+            <br/>
+            &nbsp; &nbsp;· ‘마포구 마포대로 78’ 검색
+         </p>
+          <br/>
+          <p class="transport-line">
+            ● 주차장 안내 
+            <br/>
+            &nbsp; &nbsp;· 건물 내 지하 주차장 이용
+          </p>
+        </div>
+      </div>
+
     </div>
   </section>
 </template>
