@@ -25,74 +25,114 @@
       </p>
 
       <div class="account-section">
-        <!-- 신랑측 / 신부측 탭 (가운데 토글) -->
-        <div class="account-tabs">
-          <button
-            type="button"
-            class="account-tab"
-            :class="{ active: currentSide === 'groom' }"
-            @click="changeSide('groom')"
-          >
-            신랑측
-          </button>
-          <button
-            type="button"
-            class="account-tab"
-            :class="{ active: currentSide === 'bride' }"
-            @click="changeSide('bride')"
-          >
-            신부측
-          </button>
-        </div>
-
-        <!-- 가운데 카드 캐러셀 (양옆 살짝 보이게) -->
-        <div
-          class="account-slider"
-          ref="sliderWrapper"
-          @touchstart="onTouchStart"
-          @touchmove="onTouchMove"
-          @touchend="onTouchEnd"
-          @mousedown="onMouseDown"
-          @mousemove="onMouseMove"
-          @mouseup="onMouseUp"
-          @mouseleave="onMouseLeave"
-        >
-          <div class="account-slider-track" :style="sliderStyle">
-            <div
-              v-for="(item, index) in currentAccounts"
-              :key="item.name + index"
-              class="account-slide"
-              :style="{
-                width: slideWidth + 'px',
-                marginRight:
-                  index === currentAccounts.length - 1 ? '0px' : slideGap + 'px'
-              }"
+        <!-- ───────── 신랑측 ───────── -->
+        <div class="account-side">
+          <div class="account-side-header" @click="toggleGroom">
+            <div class="account-side-title">신랑측</div>
+            <span
+              class="account-toggle-button"
             >
-              <div class="account-card">
-                <!-- 1줄 : 이름 -->
-                <div class="account-card-name">
-                  {{ item.name }}
+              <!-- font awesome 아이콘으로 접기/펼치기 -->
+              <i
+                v-if="isGroomOpen"
+                class="fa-solid fa-chevron-up"
+                aria-hidden="true"
+              ></i>
+              <i
+                v-else
+                class="fa-solid fa-chevron-down"
+                aria-hidden="true"
+              ></i>
+            </span>
+          </div>
+
+          <transition name="fade-accounts">
+            <div v-if="isGroomOpen" class="account-side-body">
+              <div
+                v-for="item in groomAccounts"
+                :key="item.role + item.name"
+                class="account-row"
+              >
+                <div class="account-main">
+                  <div class="account-name">
+                    <span class="account-role">{{ item.role }}</span>
+                    <span class="account-name-strong">{{ item.name }}</span>
+                  </div>
+                  <div class="account-detail">
+                    {{ item.bank }} {{ item.number }}
+                  </div>
                 </div>
-                <!-- 2줄 : 은행 + 계좌 + 복사 아이콘 -->
-                <div class="account-card-detail-row">
-                  <span class="account-card-bank">{{ item.bank }}</span>
-                  <span class="account-card-number">{{ item.number }}</span>
+                <div class="account-actions">
                   <button
                     type="button"
                     class="account-copy-button"
                     @click.stop="copyAccount(item)"
                   >
-                    <i class="fa-regular fa-copy"></i>
+                    <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                    <span>복사</span>
                   </button>
                 </div>
               </div>
             </div>
+          </transition>
+        </div>
+
+        <!-- ───────── 신부측 ───────── -->
+        <div class="account-side">
+          <div class="account-side-header" @click="toggleBride">
+            <div class="account-side-title">신부측</div>
+            <span
+              class="account-toggle-button"
+            >
+              <i
+                v-if="isBrideOpen"
+                class="fa-solid fa-chevron-up"
+                aria-hidden="true"
+              ></i>
+              <i
+                v-else
+                class="fa-solid fa-chevron-down"
+                aria-hidden="true"
+              ></i>
+            </span>
           </div>
+
+          <transition name="fade-accounts">
+            <div v-if="isBrideOpen" class="account-side-body">
+              <div
+                v-for="item in brideAccounts"
+                :key="item.role + item.name"
+                class="account-row"
+              >
+                <div class="account-main">
+                  <div class="account-name">
+                    <span class="account-role">{{ item.role }}</span>
+                    <span class="account-name-strong">{{ item.name }}</span>
+                  </div>
+                  <div class="account-detail">
+                    {{ item.bank }} {{ item.number }}
+                  </div>
+                </div>
+                <div class="account-actions">
+                  <button
+                    type="button"
+                    class="account-copy-button"
+                    @click.stop="copyAccount(item)"
+                  >
+                    <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                    <span>복사</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </transition>
         </div>
 
         <!-- 복사 안내 토스트 -->
         <div v-if="copyMessage" class="account-copy-guide">
           {{ copyMessage }}
+          <br/>
+          복사 완료
         </div>
       </div>
     </div>
@@ -100,218 +140,63 @@
 </template>
 
 <script setup>
-import {
-  computed,
-  ref,
-  onMounted,
-  nextTick,
-  watch,
-  onBeforeUnmount
-} from 'vue'
+import { ref } from 'vue'
 
-// ───────────────── 신랑/신부 데이터 ─────────────────
-const currentSide = ref('groom')
+const isGroomOpen = ref(true)
+const isBrideOpen = ref(true)
 
+// ───────── 계좌 데이터 ─────────
 const groomAccounts = [
   {
+    role: '신랑',
+    name: '이정필',
+    bank: '신한은행',
+    number: '110-545-887230'
+  },
+  {
+    role: '아버지',
     name: '이성재',
     bank: '국민은행',
     number: '815-21-0741-253'
   },
   {
+    role: '어머니',
     name: '전미희',
     bank: '국민은행',
     number: '507401-01-017060'
-  },
-  {
-    name: '이정필',
-    bank: '신한은행',
-    number: '110-545-887230'
   }
 ]
 
 const brideAccounts = [
   {
+    role: '신부',
+    name: '장유지',
+    bank: '국민은행',
+    number: '110-407-258772'
+  },
+  {
+    role: '아버지',
     name: '장영덕',
     bank: '국민은행',
     number: '392002-04-164359'
   },
   {
+    role: '어머니',
     name: '정수선',
     bank: '신한은행',
     number: '827-21-0129-769'
-  },
-  {
-    name: '장유지',
-    bank: '국민은행',
-    number: '110-407-258772'
   }
 ]
 
-const currentAccounts = computed(() =>
-  currentSide.value === 'groom' ? groomAccounts : brideAccounts
-)
-
-// 현재 중앙에 보이는 카드 인덱스
-const currentIndex = ref(0)
-
-// ───────────────── 슬라이더 위치/드래그 관련 ─────────────────
-const sliderWrapper = ref(null)
-const wrapperWidth = ref(0)
-const slideWidth = ref(0)
-const slideGap = ref(0)
-
-const isDragging = ref(false)
-const startX = ref(0)
-const deltaX = ref(0)
-
-// 화면 너비에 따라 카드 너비/간격 비율 다르게
-function getRatios(W) {
-  if (W <= 400) {
-    // 작은 휴대폰
-    return { widthRatio: 0.7, gapRatio: 0.08 }
-  } else if (W <= 768) {
-    // 일반 스마트폰 ~ 작은 태블릿
-    return { widthRatio: 0.75, gapRatio: 0.07 }
-  } else {
-    // 노트북/큰 화면
-    return { widthRatio: 0.8, gapRatio: 0.06 }
-  }
+const toggleGroom = () => {
+  isGroomOpen.value = !isGroomOpen.value
 }
 
-// 카드/간격 계산: 카드 폭 넓게, 양 옆 살짝 보이도록
-function initSlideMetrics() {
-  if (!sliderWrapper.value) return
-  const W = sliderWrapper.value.offsetWidth || window.innerWidth
-  wrapperWidth.value = W
-
-  const { widthRatio, gapRatio } = getRatios(W)
-
-  slideWidth.value = W * widthRatio
-  slideGap.value = W * gapRatio
+const toggleBride = () => {
+  isBrideOpen.value = !isBrideOpen.value
 }
 
-// 현재 index의 카드가 중앙에 오도록 transform 계산
-const sliderStyle = computed(() => {
-  const W = wrapperWidth.value || window.innerWidth
-  const { widthRatio, gapRatio } = getRatios(W)
-
-  const cardW = slideWidth.value || W * widthRatio
-  const gap = slideGap.value || W * gapRatio
-
-  // 현재 카드(center)의 x 좌표
-  const centerX = currentIndex.value * (cardW + gap) + cardW / 2
-  // viewport 중앙(W/2)에 맞추기 위한 offset
-  const offset = W / 2 - centerX
-
-  return {
-    transform: `translateX(${offset + deltaX.value}px)`,
-    transition: isDragging.value ? 'none' : 'transform 0.25s ease'
-  }
-})
-
-// 첫 렌더 시 메트릭 계산 + 리사이즈 대응
-const handleResize = () => {
-  initSlideMetrics()
-}
-
-onMounted(() => {
-  nextTick(() => {
-    initSlideMetrics()
-    window.addEventListener('resize', handleResize)
-  })
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', handleResize)
-})
-
-// 탭 바뀔 때 첫 카드로 & 메트릭 재계산
-function changeSide(side) {
-  currentSide.value = side
-}
-
-watch(currentSide, () => {
-  currentIndex.value = 0
-  resetDrag()
-  nextTick(() => {
-    initSlideMetrics()
-  })
-})
-
-// 공통 드래그 시작
-function beginDrag(clientX) {
-  initSlideMetrics()
-  isDragging.value = true
-  startX.value = clientX
-  deltaX.value = 0
-}
-
-// 공통 드래그 종료 → threshold 넘으면 카드 이동
-function endDrag() {
-  if (!isDragging.value) return
-  const W = wrapperWidth.value || window.innerWidth
-  const { widthRatio } = getRatios(W)
-  const cardW = slideWidth.value || W * widthRatio
-  const threshold = cardW * 0.1 // 카드 폭의 10%만 드래그해도 이동
-
-  if (
-    deltaX.value < -threshold &&
-    currentIndex.value < currentAccounts.value.length - 1
-  ) {
-    // 왼쪽으로 드래그 → 다음 카드
-    currentIndex.value += 1
-  } else if (deltaX.value > threshold && currentIndex.value > 0) {
-    // 오른쪽으로 드래그 → 이전 카드
-    currentIndex.value -= 1
-  }
-
-  resetDrag()
-}
-
-function resetDrag() {
-  isDragging.value = false
-  deltaX.value = 0
-}
-
-// 터치 이벤트
-function onTouchStart(e) {
-  if (!e.touches || e.touches.length === 0) return
-  beginDrag(e.touches[0].clientX)
-}
-
-function onTouchMove(e) {
-  if (!isDragging.value || !e.touches || e.touches.length === 0) return
-  const x = e.touches[0].clientX
-  deltaX.value = x - startX.value
-}
-
-function onTouchEnd() {
-  endDrag()
-}
-
-// 마우스 이벤트
-function onMouseDown(e) {
-  e.preventDefault()
-  beginDrag(e.clientX)
-}
-
-function onMouseMove(e) {
-  if (!isDragging.value) return
-  e.preventDefault()
-  const x = e.clientX
-  deltaX.value = x - startX.value
-}
-
-function onMouseUp() {
-  endDrag()
-}
-
-function onMouseLeave() {
-  endDrag()
-}
-
-// ───────────────── 계좌 복사 ─────────────────
+// ───────── 복사 기능 ─────────
 const copyMessage = ref('')
 
 function copyAccount(item) {
@@ -320,12 +205,12 @@ function copyAccount(item) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(
       () => {
-        copyMessage.value = `${item.bank} ${item.number} 복사 완료`
+        copyMessage.value = `${item.bank} ${item.number}`
         setTimeout(() => {
           copyMessage.value = ''
         }, 2000)
       },
-      () => fallbackCopy(text, item.name)
+      () => fallbackCopy(text)
     )
   } else {
     fallbackCopy(text)
@@ -341,7 +226,8 @@ function fallbackCopy(text) {
   document.body.appendChild(textarea)
   textarea.select()
   try {
-    copyMessage.value = `${text} 계좌번호가 복사되었습니다.`
+    document.execCommand('copy')
+    copyMessage.value = `${text}`
   } catch (e) {
     copyMessage.value = '복사를 지원하지 않는 브라우저입니다.'
   }
