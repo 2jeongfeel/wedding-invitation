@@ -73,7 +73,7 @@
                 <div class="account-card-name">
                   {{ item.name }}
                 </div>
-                <!-- 2줄 : 은행 + 계좌 + 복사버튼 한 줄 -->
+                <!-- 2줄 : 은행 + 계좌 + 복사 아이콘 -->
                 <div class="account-card-detail-row">
                   <span class="account-card-bank">{{ item.bank }}</span>
                   <span class="account-card-number">{{ item.number }}</span>
@@ -90,7 +90,7 @@
           </div>
         </div>
 
-        <!-- 복사 안내 문구 -->
+        <!-- 복사 안내 토스트 -->
         <div v-if="copyMessage" class="account-copy-guide">
           {{ copyMessage }}
         </div>
@@ -100,7 +100,14 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted, nextTick, watch } from 'vue'
+import {
+  computed,
+  ref,
+  onMounted,
+  nextTick,
+  watch,
+  onBeforeUnmount
+} from 'vue'
 
 // ───────────────── 신랑/신부 데이터 ─────────────────
 const currentSide = ref('groom')
@@ -158,23 +165,39 @@ const isDragging = ref(false)
 const startX = ref(0)
 const deltaX = ref(0)
 
+// 화면 너비에 따라 카드 너비/간격 비율 다르게
+function getRatios(W) {
+  if (W <= 400) {
+    // 작은 휴대폰
+    return { widthRatio: 0.7, gapRatio: 0.08 }
+  } else if (W <= 768) {
+    // 일반 스마트폰 ~ 작은 태블릿
+    return { widthRatio: 0.75, gapRatio: 0.07 }
+  } else {
+    // 노트북/큰 화면
+    return { widthRatio: 0.8, gapRatio: 0.06 }
+  }
+}
+
 // 카드/간격 계산: 카드 폭 넓게, 양 옆 살짝 보이도록
 function initSlideMetrics() {
   if (!sliderWrapper.value) return
   const W = sliderWrapper.value.offsetWidth || window.innerWidth
   wrapperWidth.value = W
 
-  // 카드 너비: 화면의 88% (👉 기존보다 좀 더 넓게)
-  slideWidth.value = W * 0.67
-  // 카드 사이 간격: 화면의 10% (양 옆 카드 살짝 보이게)
-  slideGap.value = W * 0.01
+  const { widthRatio, gapRatio } = getRatios(W)
+
+  slideWidth.value = W * widthRatio
+  slideGap.value = W * gapRatio
 }
 
 // 현재 index의 카드가 중앙에 오도록 transform 계산
 const sliderStyle = computed(() => {
   const W = wrapperWidth.value || window.innerWidth
-  const cardW = slideWidth.value || W * 0.7
-  const gap = slideGap.value || W * 0.01
+  const { widthRatio, gapRatio } = getRatios(W)
+
+  const cardW = slideWidth.value || W * widthRatio
+  const gap = slideGap.value || W * gapRatio
 
   // 현재 카드(center)의 x 좌표
   const centerX = currentIndex.value * (cardW + gap) + cardW / 2
@@ -187,11 +210,20 @@ const sliderStyle = computed(() => {
   }
 })
 
-// 첫 렌더 시 메트릭 계산
+// 첫 렌더 시 메트릭 계산 + 리사이즈 대응
+const handleResize = () => {
+  initSlideMetrics()
+}
+
 onMounted(() => {
   nextTick(() => {
     initSlideMetrics()
+    window.addEventListener('resize', handleResize)
   })
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', handleResize)
 })
 
 // 탭 바뀔 때 첫 카드로 & 메트릭 재계산
@@ -218,7 +250,9 @@ function beginDrag(clientX) {
 // 공통 드래그 종료 → threshold 넘으면 카드 이동
 function endDrag() {
   if (!isDragging.value) return
-  const cardW = slideWidth.value || wrapperWidth.value * 0.7
+  const W = wrapperWidth.value || window.innerWidth
+  const { widthRatio } = getRatios(W)
+  const cardW = slideWidth.value || W * widthRatio
   const threshold = cardW * 0.1 // 카드 폭의 10%만 드래그해도 이동
 
   if (
@@ -294,11 +328,11 @@ function copyAccount(item) {
       () => fallbackCopy(text, item.name)
     )
   } else {
-    fallbackCopy(text, item.name)
+    fallbackCopy(text)
   }
 }
 
-function fallbackCopy(text, name) {
+function fallbackCopy(text) {
   const textarea = document.createElement('textarea')
   textarea.value = text
   textarea.setAttribute('readonly', '')
@@ -307,8 +341,7 @@ function fallbackCopy(text, name) {
   document.body.appendChild(textarea)
   textarea.select()
   try {
-    document.execCommand('copy')
-    copyMessage.value = `${name} 계좌번호가 복사되었습니다.`
+    copyMessage.value = `${text} 계좌번호가 복사되었습니다.`
   } catch (e) {
     copyMessage.value = '복사를 지원하지 않는 브라우저입니다.'
   }

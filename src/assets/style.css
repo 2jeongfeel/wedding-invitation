@@ -579,9 +579,8 @@ section {
 
 /* 카드 자체 */
 .account-card {
-  width: 100%;              /* 슬라이드 폭만큼 채우기 */
-  max-width: 280px;
-  min-height: 120px;
+  width: 100%;
+  max-width: 320px;
   border-radius: 18px;
   border: 1px solid #e0e0e0;
   background: #ffffff;
@@ -590,24 +589,24 @@ section {
 
   display: flex;
   flex-direction: column;
-  align-items: center;      /* 내용 가운데 정렬 */
+  align-items: center;
   text-align: center;
   gap: 15px;
 }
 
 /* 1줄 : 이름 */
 .account-card-name {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
 }
 
-/* 2줄 : 은행 + 계좌 + 복사 버튼 (한 줄) */
+/* 은행 + 계좌 + 복사 아이콘 한 줄 */
 .account-card-detail-row {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #555;
   flex-wrap: wrap;
 }
@@ -616,35 +615,45 @@ section {
   margin-right: 2px;
 }
 
-/* 복사 버튼 */
+.account-card-number {
+  word-break: break-all;
+}
+
+/* 복사 아이콘 버튼 */
 .account-copy-button {
   width: 26px;
   height: 26px;
   border-radius: 999px;
   border: none;
-  background: #ffffff;
+  background: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   padding: 0;
 }
 
 .account-copy-button i {
   font-size: 0.9rem;
-  margin: 0; /* 텍스트 없으니 마진 제거 */
+  margin: 0;
 }
 
-/* 복사 안내 문구 */
+/* 복사 안내 토스트 (레이아웃에 영향 X) */
 .account-copy-guide {
-  margin-top: 180px;
-  font-size: 0.78rem;
-  color: #888;
-  text-align: center;
-  pointer-events: none;          /* 클릭 막지 않게 */
   position: fixed;
+  left: 50%;
+  bottom: 60px;
+  transform: translateX(-50%);
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 0.78rem;
+  text-align: center;
+  z-index: 2000;
+  pointer-events: none;
 }
+
 
 /* =========================================
    FOOTER
@@ -673,6 +682,31 @@ section {
 
 .footer-text {
   line-height: 1.4;
+}
+
+.footer-kakao-share {
+  margin-top: 6px;
+  width: 100%;
+  padding: 36px 24px;
+  cursor: pointer;
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-kakao-share-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-image: url(/wedding-invitation/img/icon-kakaotalk.svg);
+  background-repeat: no-repeat;
+  background-size: auto 16px;
+  padding-left: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 /* =========================================
