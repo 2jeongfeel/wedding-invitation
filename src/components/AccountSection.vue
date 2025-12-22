@@ -172,19 +172,19 @@ const brideAccounts = [
     role: '신부',
     name: '장유지',
     bank: '국민은행',
-    number: '110-407-258772'
+    number: '392002-04-164359'
   },
   {
     role: '아버지',
     name: '장영덕',
     bank: '국민은행',
-    number: '392002-04-164359'
+    number: '827-21-0129-769'
   },
   {
     role: '어머니',
     name: '정수선',
     bank: '신한은행',
-    number: '827-21-0129-769'
+    number: '110-407-258772'
   }
 ]
 
